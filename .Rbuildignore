@@ -1,0 +1,11 @@
+^DAISIErobustness\.Rproj$
+^\.Rproj\.user$
+^\.travis\.yml$
+^LICENSE\.md$
+^data/generate_maui_nui_pars\.R$
+^data/kauai_pars\.R$
+^data$
+^scripts$
+^doc$
+^appveyor\.yml$
+^results/\$
