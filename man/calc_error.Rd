@@ -5,22 +5,18 @@
 \title{Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time}
 \usage{
-calc_error(simulation_pars, ml, simulations_1, simulations_2, replicates)
+calc_error(simulations_1, simulations_2, replicates)
 }
 \arguments{
-\item{simulation_pars}{A list of simulation parameters.}
-
-\item{ml}{Output from \code{\link{DAISIE_ML_CS}}}
-
 \item{simulations_1}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}},
-\code{\link{DAISIE_sim_time_dependent}} or
-\code{\link{DAISIE_sim_constant_rate_shift}}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}()},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
 
 \item{simulations_2}{A list of simulation output from
-\code{\link{DAISIE_sim_constant_rate}},
-\code{\link{DAISIE_sim_time_dependent}} or
-\code{\link{DAISIE_sim_constant_rate_shift}}}
+\code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+\code{\link[DAISIE]{DAISIE_sim_time_dependent}()} or
+\code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}()}}
 
 \item{replicates}{A numeric for the number of replicates for the
 simulations.}
@@ -32,3 +28,11 @@ A list with four error metrics
 Calcualtes error in rates, number of species-through-time, number
 of endemics-through-time and non-endemics-through-time
 }
+\seealso{
+Other error calculations: 
+\code{\link{calc_js_dist}()}
+}
+\author{
+Joshua Lambert, Pedro Neves
+}
+\concept{error calculations}

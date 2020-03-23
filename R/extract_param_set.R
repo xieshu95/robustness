@@ -1,8 +1,8 @@
 #' Extracts a set of parameters from the parameter space for the
 #' simulation
 #'
-#' @inheritParams default_params_doc
-#'
+#' @inheritParams xyt
+#' @author Joshua Lambert, Pedro Neves
 #' @return a list of simulation parameters
 #' @export
 extract_param_set <- function(param_space_name,
@@ -11,7 +11,7 @@ extract_param_set <- function(param_space_name,
   simulation_pars <- list()
   if (param_space_name == "nonoceanic") {
     simulation_pars$time <- param_space$time[param_set]
-    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$M <- param_space$M[param_set] #nolint
     simulation_pars$pars <- c(param_space$lac[param_set],
                               param_space$mu[param_set],
                               param_space$K[param_set],
@@ -22,7 +22,7 @@ extract_param_set <- function(param_space_name,
   }
   if (param_space_name == "nonoceanic_land_bridge") {
     simulation_pars$time <- param_space$time[param_set]
-    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$M <- param_space$M[param_set] #nolint
     simulation_pars$pars <- c(param_space$lac_1[param_set],
                               param_space$mu_1[param_set],
                               param_space$K_1[param_set],
@@ -32,8 +32,7 @@ extract_param_set <- function(param_space_name,
                               param_space$mu_2[param_set],
                               param_space$K_2[param_set],
                               param_space$gam_2[param_set],
-                              param_space$laa_2[param_set]
-    )
+                              param_space$laa_2[param_set])
     simulation_pars$nonoceanic_pars <- c(param_space$x_s[param_set],
                                          param_space$x_nonend[param_set])
 
@@ -44,9 +43,8 @@ extract_param_set <- function(param_space_name,
       param_space_name == "oceanic_sea_level" ||
       param_space_name == "oceanic_ontogeny_sea_level" ||
       param_space_name == "nonoceanic_sea_level") {
-
     simulation_pars$time <- param_space$time[param_set]
-    simulation_pars$M <- param_space$M[param_set]
+    simulation_pars$M <- param_space$M[param_set] #nolint
     simulation_pars$pars <- c(param_space$lac[param_set],
                               1,
                               param_space$K[param_set],
@@ -68,6 +66,22 @@ extract_param_set <- function(param_space_name,
     simulation_pars$ext_pars <- c(param_space$mu_min[param_set],
                                   param_space$mu_p[param_set])
     simulation_pars$extcutoff <- param_space$extcutoff[param_set]
+  }
+  if (param_space_name == "trait") {
+    simulation_pars$time <- param_space$time[param_set]
+    simulation_pars$M <- param_space$M[param_set] #nolint
+    simulation_pars$pars <- c(param_space$lac[param_set],
+                              param_space$mu[param_set],
+                              param_space$K[param_set],
+                              param_space$gam[param_set],
+                              param_space$laa[param_set])
+    simulation_pars$trait_pars <- list(trans_rate = param_space$trans[param_set],
+                                       immig_rate2 = param_space$gam2[param_set],
+                                       ext_rate2 = param_space$mu2[param_set],
+                                       ana_rate2 = param_space$laa2[param_set],
+                                       clado_rate2 = param_space$lac[param_set],
+                                       trans_rate2 = param_space$trans2[param_set],
+                                       M2 = param_space$M2[param_set])
   }
   return(simulation_pars)
 }

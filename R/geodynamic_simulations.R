@@ -1,16 +1,14 @@
 #' Runs DAISIE simulation with geodynamics
 #'
 #' @inheritParams default_params_doc
-#'
-#' @return A list output from \code{\link{DAISIE_sim_constant_rate}},
-#' \code{\link{DAISIE_sim_time_dependent}}, or
-#' \code{\link{DAISIE_sim_constant_rate_shift}}
+#' @author Joshua Lambert, Pedro Neves
+#' @return A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
+#' \code{\link[DAISIE]{DAISIE_sim_time_dependent}}, or
+#' \code{\link[DAISIE]{DAISIE_sim_constant_rate_shift}}
 #' @export
 geodynamic_simulations <- function(param_space_name,
                                    simulation_pars,
-                                   replicates,
-                                   verbose) {
-
+                                   replicates) {
   geodynamic_simulations <- list()
   if (param_space_name == "nonoceanic") {
     for (i in seq_len(replicates)) {
@@ -22,7 +20,7 @@ geodynamic_simulations <- function(param_space_name,
         nonoceanic_pars = simulation_pars$nonoceanic_pars,
         sample_freq  = Inf,
         plot_sims = FALSE,
-        verbose = verbose
+        verbose = FALSE
       )
     }
   }
@@ -37,11 +35,10 @@ geodynamic_simulations <- function(param_space_name,
         shift_times = simulation_pars$shift_times,
         sample_freq  = Inf,
         plot_sims = FALSE,
-        verbose = verbose
+        verbose = FALSE
       )
       }
     }
-
   if (param_space_name == "oceanic_ontogeny" ||
       param_space_name == "oceanic_sea_level" ||
       param_space_name == "oceanic_ontogeny_sea_level" ||
@@ -58,9 +55,9 @@ geodynamic_simulations <- function(param_space_name,
         area_pars = simulation_pars$area_pars,
         ext_pars = simulation_pars$ext_pars,
         extcutoff = simulation_pars$extcutoff,
+        sample_freq = Inf,
         plot_sims = FALSE,
-        verbose = verbose,
-        sample_freq = Inf
+        verbose = FALSE
       )
       }
     }

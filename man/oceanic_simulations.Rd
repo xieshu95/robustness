@@ -4,19 +4,19 @@
 \alias{oceanic_simulations}
 \title{Runs original oceanic DAISIE simulation}
 \usage{
-oceanic_simulations(ml, simulation_pars, verbose)
+oceanic_simulations(ml, simulation_pars)
 }
 \arguments{
-\item{ml}{Output from \code{\link{DAISIE_ML_CS}}}
+\item{ml}{Output from \code{\link[DAISIE]{DAISIE_ML_CS}()}}
 
 \item{simulation_pars}{A list of simulation parameters.}
-
-\item{verbose}{logical determining whether to print
-simulation statements to the console.}
 }
 \value{
-Output from \code{\link{DAISIE_sim_constant_rate}}
+Output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}}
 }
 \description{
 Runs original oceanic DAISIE simulation
+}
+\author{
+Joshua Lambert, Pedro Neves
 }
