@@ -4,7 +4,7 @@
 #' be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 #' \code{"oceanic_ontogeny_sea_level"},
 #' \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-#' \code{"nonoceanic_land_bridge"}.
+#' \code{"nonoceanic_land_bridge"}，
 #' @param param_set A numeric with the line corresponding to parameter set to
 #' run, as found in the file named in \code{param_space}.
 #' @param replicates A numeric for the number of replicates for the

@@ -11,7 +11,7 @@ geodynamic_simulations(param_space_name, simulation_pars, replicates)
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}，}
 
 \item{simulation_pars}{A list of simulation parameters.}
 
@@ -26,6 +26,11 @@ A list output from \code{\link[DAISIE]{DAISIE_sim_constant_rate}},
 \description{
 Runs DAISIE simulation with geodynamics
 }
+\seealso{
+Other simulation functions: 
+\code{\link{oceanic_simulations}()}
+}
 \author{
 Joshua Lambert, Pedro Neves
 }
+\concept{simulation functions}

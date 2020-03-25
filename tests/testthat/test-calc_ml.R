@@ -82,20 +82,32 @@ test_that("test calc_ml output is correct with oceanic simulations", {
     oceanic_ml <- calc_ml(
       simulations = oceanic_simulations_1)
     expect_length(oceanic_ml, 2)
-    expect_equal(oceanic_ml[[1]]$lambda_c, 0.4703865020955945)
-    expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012)
-    expect_equal(oceanic_ml[[1]]$K, 0.9604172665676682)
-    expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983)
-    expect_equal(oceanic_ml[[1]]$lambda_a, 1.256814199481393)
-    expect_equal(oceanic_ml[[1]]$loglik, -86.44387709521121)
+    expect_equal(oceanic_ml[[1]]$lambda_c, 0.4703865020955945,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[1]]$mu, 0.3024123467825012,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[1]]$K, 0.9604172665676682,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[1]]$gamma, 0.005654402886347983,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[1]]$lambda_a, 1.256814199481393,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[1]]$loglik, -86.44387709521121,
+                 tolerance = 0.001)
     expect_equal(oceanic_ml[[1]]$df, 5)
     expect_equal(oceanic_ml[[1]]$conv, 0)
-    expect_equal(oceanic_ml[[2]]$lambda_c, 1.266996227093286)
-    expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718)
-    expect_equal(oceanic_ml[[2]]$K, 4.29713623613709)
-    expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656)
-    expect_equal(oceanic_ml[[2]]$lambda_a, 7.741644634429056e-08)
-    expect_equal(oceanic_ml[[2]]$loglik, -139.8897801706968)
+    expect_equal(oceanic_ml[[2]]$lambda_c, 1.266996227093286,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[2]]$mu, 1.360311534579718,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[2]]$K, 4.29713623613709,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[2]]$gamma, 0.01871138624408656,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[2]]$lambda_a, 7.741644634429056e-08,
+                 tolerance = 0.001)
+    expect_equal(oceanic_ml[[2]]$loglik, -139.8897801706968,
+                 tolerance = 0.001)
     expect_equal(oceanic_ml[[2]]$df, 5)
     expect_equal(oceanic_ml[[2]]$conv, 0)
   } else {
@@ -104,12 +116,26 @@ test_that("test calc_ml output is correct with oceanic simulations", {
 })
 
 test_that("test calc_ml output is correct for failed convergence", {
-  skip("Need to fail convergence")
-  simulation_pars <- "stub"
-  geodynamic_simulations <- "stub"
-  geodynamic_ml <- calc_ml(
+  if (Sys.getenv("TRAVIS") != "" || Sys.getenv("APPVEYOR") != "") {
+    param_space <- load_param_space(
+      param_space_name = "oceanic_sea_level")
+    set.seed(1)
+    simulation_pars <- extract_param_set(
+      param_space_name = "oceanic_sea_level",
+      param_space = param_space,
+      param_set = 233)
+    geodynamic_simulations <- geodynamic_simulations(
+      param_space_name = "oceanic_sea_level",
+      simulation_pars = simulation_pars,
+      replicates = 2)
+    simulation_constraints <- simulation_constraints(
+      simulations = geodynamic_simulations,
+      replicates = 2)
+    geodynamic_ml <- calc_ml(
       simulations = geodynamic_simulations)
-  expect_length(geodynamic_ml, 2)
-  expect_equal(geodynamic_ml[[1]], "No convergence")
-  expect_equal(geodynamic_ml[[2]], "No convergence")
+    expect_length(geodynamic_ml, 2)
+    expect_equal(geodynamic_ml[[1]], "ML didn't converge")
+  } else {
+    skip("Run only on TRAVIS or AppVeyor")
+  }
 })

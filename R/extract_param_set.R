@@ -1,9 +1,10 @@
 #' Extracts a set of parameters from the parameter space for the
 #' simulation
 #'
-#' @inheritParams xyt
+#' @inheritParams default_params_doc
 #' @author Joshua Lambert, Pedro Neves
 #' @return a list of simulation parameters
+#' @family parameter set handling functions
 #' @export
 extract_param_set <- function(param_space_name,
                               param_space,
@@ -79,7 +80,7 @@ extract_param_set <- function(param_space_name,
                                        immig_rate2 = param_space$gam2[param_set],
                                        ext_rate2 = param_space$mu2[param_set],
                                        ana_rate2 = param_space$laa2[param_set],
-                                       clado_rate2 = param_space$lac[param_set],
+                                       clado_rate2 = param_space$lac2[param_set],
                                        trans_rate2 = param_space$trans2[param_set],
                                        M2 = param_space$M2[param_set])
   }

@@ -12,7 +12,7 @@ extract_param_set(param_space_name, param_space, param_set)
 be \code{"oceanic_ontogeny"}, \code{"oceanic_sea_level"},
 \code{"oceanic_ontogeny_sea_level"},
 \code{"nonoceanic"}, \code{"nonoceanic_sea_level"}, or
-\code{"nonoceanic_land_bridge"}.}
+\code{"nonoceanic_land_bridge"}，}
 
 \item{param_space}{tibble of the parameter space.}
 
@@ -26,6 +26,11 @@ a list of simulation parameters
 Extracts a set of parameters from the parameter space for the
 simulation
 }
+\seealso{
+Other parameter set handling functions: 
+\code{\link{load_param_space}()}
+}
 \author{
 Joshua Lambert, Pedro Neves
 }
+\concept{parameter set handling functions}
