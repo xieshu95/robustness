@@ -1015,7 +1015,7 @@ M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
 lac <- c(0.5, 2)
 mu <- c(0.5, 1)
 K <- c(10, Inf)
-gam <- c(0.01, 0.05, 0.1)
+gam <- c(0.01, 0.1)
 laa <- 1
 M2 <- Mtotal - M
 trans <- c(0, 0.5)
@@ -1045,7 +1045,7 @@ M <- c(Mtotal * 0.1, Mtotal * 0.5, Mtotal)
 lac <- c(0.5, 2)
 mu <- c(0.5, 1)
 K <- c(10, Inf)
-gam <- c(0.01, 0.05, 0.1)
+gam <- c(0.01, 0.1)
 laa <- 1
 M2 <- Mtotal - M
 trans <- c(0, 0.5)
