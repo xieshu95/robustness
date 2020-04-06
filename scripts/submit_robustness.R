@@ -18,8 +18,8 @@
 submit_robustness <- function(param_space_name,
                               account,
                               session = NA,
-                              replicates = 100,
-                              num_job = c(1, 100),
+                              replicates = 1,
+                              num_job = c(1, 2),
                               partition = "gelifes",
                               folder = 'data') {
   testit::assert(is.character(folder))
@@ -33,8 +33,8 @@ submit_robustness <- function(param_space_name,
 
   for (param_set in num_job[1]:num_job[2]) {
     jap::run_on_cluster_loopable(
-      github_name = "Neves-P",
-      package_name = "DAISIErobustness",
+      github_name = "xieshu95",
+      package_name = "robustness",
       function_name = "run_robustness",
       account = account,
       session = session,
